@@ -133,7 +133,7 @@
                         $('#duracion').text(response.duracion);
                         $('#precio').text(response.precio);
                         $('#numero_bus').text(response.numero_bus);
-                        $('#num_asientos_dispo').text(response.num_asientos_dispo);
+                        $('#num_asientos_dispo').text(response.num_asientos);
                     },
                     error: function(response) {
                         // Manejamos el error en caso de que la petición falle

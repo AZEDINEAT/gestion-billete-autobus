@@ -15,7 +15,7 @@ class Viaje extends Model
         'origen',
         'destino',
         'numero_bus',
-        'num_asientos_dispo',
+        'num_asientos',
         'precio',
         'fecha_viaje',
         'hora_viaje',

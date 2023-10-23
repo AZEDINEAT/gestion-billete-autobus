@@ -19,12 +19,12 @@ class Admincontroller extends Controller
         
     $email = $request->input('email');
     $password = $request->input('password');
-
+    
     // Busca al usuario por su email
-    $user = Admin::where('email', $email)->first();
-
+    $user = Admin::where('correo', $email)->first();
+    
     // Si se encontró un usuario y la contraseña es correcta
-    if ($user && $user->password == $password) {
+    if ($user && password_verify($password, $user->contrasena)) {
         // Autenticar al usuario
         Auth::login($user);
 

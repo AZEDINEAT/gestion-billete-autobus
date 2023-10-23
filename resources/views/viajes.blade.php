@@ -82,7 +82,7 @@
 
                                     <div class="col-md-6">
                                         <input id="num_asientos_dispo" type="number" class="form-control"
-                                            name="num_asientos_dispo" value="{{ isset($viaje) ? $viaje->num_asientos_dispo : old('num_asientos_dispo') }}" required
+                                            name="num_asientos_dispo" value="{{ isset($viaje) ? $viaje->num_asientos : old('num_asientos_dispo') }}" required
                                             autocomplete="off">
                                     </div>
                                 </div>

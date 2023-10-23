@@ -13,8 +13,8 @@ class Admin extends  Authenticatable
 
     protected $fillable = [
         'nombre',
-        'email',
-        'password',
+        'correo',
+        'contrasena',
     ];
  //   public function getAuthPassword()
 //{

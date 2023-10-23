@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-
+use Illuminate\Support\Facades\DB;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -18,5 +18,13 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        DB::table('admin')->insert([
+            ['nombre' => 'azzed', 'correo' => 'az@example.com', 'contrasena' => bcrypt('123')],
+            ['nombre' => 'azz', 'correo' => 'azed@example.com', 'contrasena' => bcrypt('456')],
+        ]);
+
+
+
     }
 }

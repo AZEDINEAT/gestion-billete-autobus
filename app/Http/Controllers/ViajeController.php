@@ -47,7 +47,7 @@ class ViajeController extends Controller
         $viaje->hora_llegada = $request->input('hora_llegada');
         $viaje->origen = $request->input('origen');
         $viaje->destino = $request->input('destino');
-        $viaje->num_asientos_dispo = $request->input('num_asientos_dispo');
+        $viaje->num_asientos = $request->input('num_asientos_dispo');
         $viaje->precio = $request->input('precio');
         $viaje->save();
 
@@ -84,7 +84,7 @@ class ViajeController extends Controller
     $viaje->hora_llegada = $request->input('hora_llegada');
     $viaje->origen = $request->input('origen');
     $viaje->destino = $request->input('destino');
-    $viaje->num_asientos_dispo = $request->input('num_asientos_dispo');
+    $viaje->num_asientos = $request->input('num_asientos_dispo');
     $viaje->precio = $request->input('precio');
 
     // Calcular la duración del viaje
@@ -163,7 +163,7 @@ class ViajeController extends Controller
             $viaje = Viaje::findOrFail($request->viaje_id);
 
             // Restar 1 al número de asientos disponibles en el viaje
-            $viaje->num_asientos_dispo--;
+            $viaje->num_asientos--;
             
             $viaje->save();
 

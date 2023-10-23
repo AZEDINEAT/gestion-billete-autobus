@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('destino');
             $table->string('numero_bus');
             $table->integer('num_asientos');
-            $table->string('nombre_parada');
             $table->date('fecha_viaje');
             $table->time('hora_viaje'); 
             $table->time('hora_llegada');

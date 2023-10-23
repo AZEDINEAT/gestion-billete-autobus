@@ -24,7 +24,7 @@
                             <p class="lead mt-3 text-white">{{ date('h:i A', strtotime($viaje->hora_llegada)) }}</p>
                         </div>
                         <div style="margin-top:15%;margin-left:5px;">
-                            <p class="lead" style="font-weight:100;color:rgb(0, 0, 0)">disponible:{{ $viaje->num_asientos_dispo}}</p>
+                            <p class="lead" style="font-weight:100;color:rgb(0, 0, 0)">disponible:{{ $viaje->num_asientos}}</p>
                         </div>
                         <div style="margin-left:5px;">
                             <p class="lead" style="font-weight:100;color:rgb(0, 0, 0)">duracion:{{ $viaje->duracion}} S</p>
@@ -32,7 +32,7 @@
                         
                         
 
-                        @if ($viaje->num_asientos_dispo > 0)
+                        @if ($viaje->num_asientos > 0)
                             <div style="float:right">
                                 <a href="/resultado/{{ $viaje->id }}/profil"
                                     class="btn btn-danger px-5">{{ $viaje->precio }} $</a>
