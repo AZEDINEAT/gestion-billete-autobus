@@ -27,7 +27,7 @@
                         
                     </button>
                     <ul class="dropdown-menu text-center  dropdown-menu-dark" >
-                        <li>{{ Auth::user()->email }}</li>
+                        <li>{{ Auth::user()->correo }}</li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <form action="/logout" method="POST">

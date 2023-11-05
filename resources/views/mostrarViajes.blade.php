@@ -24,8 +24,9 @@
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
-                    @foreach ($viajes as $viaj)
+                
+                <tbody> 
+                     @foreach ($viajes as $viaj)  
                         <tr>
                             <td>{{ $viaj->origen }}</td>
                             <td>{{ $viaj->destino }}</td>
@@ -46,10 +47,16 @@
                                     <button type="submit" onclick="return confirmarEliminacion()"
                                         class="btn btn-danger btn-sm">Eliminar</button>
                                 </form>
-                            </td>
+                                
+                                <form action="/mostrarReservas/{{ $viaj->id }}" method="GET" style="display: inline-block;">
+                                    @csrf
+                                    <button type="submit" class="btn btn-info btn-sm">reservaciones</button>
+                                </form>
+                            </td>                                 
                         </tr>
-                    @endforeach
+                        @endforeach   
                 </tbody>
+                
             </table>
         </div>
     </div>
