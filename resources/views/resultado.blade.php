@@ -1,47 +1,60 @@
 @extends('app')
 
 @section('contenido')
-    <section class="pt-0  pt-lg-5">
-        <div class="container ">
+    <section class="pt-2 mt-4">
+        <div class="container">
             @foreach ($viajes as $viaje)
-                <div class="row mb-3 ">
-                    <div class="col-8 p-2 shadow"
-                        style="background-color:rgb(49, 184, 208);margin-left:120px ;border-radius: 5px;">
-                        <div style="margin-left: 10px ; float:left" class="text-center">
-                            <p class="lead" style="font-weight:normal;">{{ $viaje->origen }}</p>
-                            <hr style="border-top: 1px solid rgb(0, 0, 0); margin: 5px 0;">
-                            <p class="lead mt-3 text-white">{{ date('h:i A', strtotime($viaje->hora_viaje)) }}</p>
-                        </div>
-                        <div style="margin-left:230px ;float: left;" class="text-center">
-                            <p class="lead " style="font-weight:normal;">fecha</p>
-                            <hr style="border-top: 1px solid rgb(0, 0, 0); margin: 5px 0;">
-                            <p class="lead mt-3 text-white">{{ $viaje->fecha_viaje}}</p>
-                        </div>
-
-                        <div style="margin-right:10px;float: right;" class="text-center">
-                            <p class="lead" style="font-weight:normal;">{{ $viaje->destino }}</p>
-                            <hr style="border-top: 1px solid rgb(0, 0, 0); margin: 5px 0;">
-                            <p class="lead mt-3 text-white">{{ date('h:i A', strtotime($viaje->hora_llegada)) }}</p>
-                        </div>
-                        <div style="margin-top:15%;margin-left:5px;">
-                            <p class="lead" style="font-weight:100;color:rgb(0, 0, 0)">disponible:{{ $viaje->num_asientos}}</p>
-                        </div>
-                        <div style="margin-left:5px;">
-                            <p class="lead" style="font-weight:100;color:rgb(0, 0, 0)">duracion:{{ $viaje->duracion}} S</p>
-                        </div>
-                        
-                        
-
-                        @if ($viaje->num_asientos > 0)
-                            <div style="float:right">
-                                <a href="/resultado/{{ $viaje->id }}/profil"
-                                    class="btn btn-danger px-5">{{ $viaje->precio }} $</a>
+                <div class="row mb-4 justify-content-center">
+                    <div class="col-lg-10 colo-md-12 pt-md-2 shadow"
+                        style="background-color:rgb(126, 218, 234);border-radius: 5px;">
+                        <div class="row pt-2">
+                            <div class="col-md-4
+                            text-center">
+                                <p class="lead" style="font-weight:normal;">{{ $viaje->origen }}</p>
+                                <hr style="border-top: 1px solid rgb(185, 33, 33)">
+                                <p class="lead mt-3 text-white">{{ date('h:i', strtotime($viaje->hora_viaje)) }}</p>
                             </div>
-                        @else
-                            <div style="float:right;">
-                                <button class="btn btn-outline-secondary px-4" disabled>No disponible</button>
+
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <p class="lead " style="font-weight:normal;">fecha</p>
+                                    <hr style="border: 0.5px dashed rgb(0, 0, 0);">
+                                    <p class="lead mt-3 text-white">{{ $viaje->fecha_viaje }}</p>
+                                </div>
                             </div>
-                        @endif
+                            <div class="col-md-4">
+                                <div class="text-center ">
+                                    <p class="lead" style="font-weight:normal;">{{ $viaje->destino }}</p>
+                                    <hr style="border-top: 1px solid rgb(0, 0, 0); margin: 5px 0;">
+                                    <p class="lead mt-3 text-white">{{ date('h:i', strtotime($viaje->hora_llegada)) }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pt-5 mb-4">
+                            <div class="col-md-4 text-center pb-3">
+                                <span class="border border-black p-2">disponible
+                                    {{ $viaje->num_asientos > 0 ? $viaje->num_asientos : 0 }} <i
+                                        class="fa-solid fa-chair fa-beat-fade fa-lg" style="color: #17514d;"></i> </span>
+                            </div>
+
+                            <div class="col-md-4 text-center pb-3"><span class="border border-black p-2">duracion
+                                    {{ $viaje->duracion }} <i class="fa-solid fa-clock"></i>
+                                </span></div>
+
+                            <div class="col-md-4">
+                                @if ($viaje->num_asientos > 0)
+                                    <div class="d-grid justify-content-center justify-content-md-end">
+                                        <a href="/resultado/{{ $viaje->id }}/profil"
+                                            class="btn btn-danger px-5">{{ $viaje->precio }}
+                                            $</a>
+                                    </div>
+                                @else
+                                    <div class="d-grid justify-content-center justify-content-md-end">
+                                        <button class="btn btn-outline-secondary px-4" disabled>No disponible</button>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
                     </div>
 
                 </div> <!-- Row END -->

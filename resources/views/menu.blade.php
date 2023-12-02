@@ -1,55 +1,62 @@
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: rgb(58, 172, 190)">
-    <a class="navbar-brand " style="margin-left: 5px" href="/">azdibus</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/">Inicio</a>
-            </li>
-            @auth
-            <li class="nav-item">
-                <a class="nav-link" href="/crearViaje">crear viaje</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/mostrarViajes">mostrar viajes</a>
-            </li>
-            @endauth
-        </ul>
-        @auth
-        <ul class="navbar-nav"  style="margin-left:20px" >
-                <div class="dropdown">
-                    <button class="btn text-white dropdown-toggle " style="background-color: rgb(78, 14, 10)" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        {{ Auth::user()->nombre }}
-                        
-                    </button>
-                    <ul class="dropdown-menu text-center  dropdown-menu-dark" >
-                        <li>{{ Auth::user()->correo }}</li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li>
-                            <form action="/logout" method="POST">
-                                @csrf
-                                <button type="submit" class="dropdown-item">Cerrar sesión</button>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
-            @else
+<nav class="navbar navbar-expand-lg navbar-light"
+    style="background-image: radial-gradient(circle at 77.81% 60.12%, #52d4eb 0, #55c1d8 50%, #57aec5 100%);">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/"> <img src="{{ asset('imagens/bus-ticket.png') }}"
+                style="max-width: 40px; height: auto;" alt="logo autobus" class="bus-image "> </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">Iniciar sesión</a>
+                    <a class="nav-link" href="/">Inicio</a>
                 </li>
-            @endauth
-        </ul>
+                @auth
+                    <li class="nav-item">
+                        <a class="nav-link" href="/crearViaje">Crear Viaje</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/mostrarViajes">Mostrar Viajes</a>
+                    </li>
+                @endauth
+            </ul>
+            @auth
+                <ul class="navbar-nav">
+                    <div class="dropdown">
+                        <button class="btn text-white dropdown-toggle "
+                            style="background-color: 
+                        rgb(0, 0, 0)" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ Auth::user()->nombre }}
+
+                        </button>
+                        <ul class="dropdown-menu text-center  dropdown-menu-dark">
+                            <li>{{ Auth::user()->correo }}</li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <form action="/logout" method="POST">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">Cerrar sesión</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                @else
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Iniciar sesión</a>
+                        </li>
+                    @endauth
+                </ul>
+                @if ($_SERVER['REQUEST_URI'] == '/')
+                    <div class="d-flex ms-lg-auto ms-md-0" style="max-width: 500px">
+                        <input class="form-control" type="text" id="dni" name="dni" placeholder="DNI">
+                        <button class="btn btn-danger mx-2 text-white" id="buscarBtn">Buscar</button>
+                    </div>
+                @endif
+        </div>
     </div>
-    @if($_SERVER['REQUEST_URI'] == '/')
-    <div class="d-flex ms-auto mx-3">
-        <input class="form-control me-2" type="text" id="dni" name="dni" placeholder="DNI" >
-        <button class="btn btn-outline-danger text-white" id="buscarBtn" >Buscar</button>
-    </div>  
-    @endif
-    
 </nav>

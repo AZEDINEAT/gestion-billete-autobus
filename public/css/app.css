@@ -1,0 +1,20 @@
+.navbar-light .navbar-nav .nav-link {
+    color: #ffffff;
+}
+
+.bus-image {
+    animation: moveBus 1s ease-in-out alternate;
+}
+
+@keyframes moveBus {
+    0% {
+        transform: translateX(320px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+        /* Cambia la distancia que deseas que se mueva */
+    }
+}

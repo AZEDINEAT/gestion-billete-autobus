@@ -1,68 +1,106 @@
 @extends('app')
-
 @section('contenido')
-    <div class="card" style="margin-top:7%">
+    <div class="mb-2 mt-5">
         @if (session('mensaje'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('mensaje') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                        aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        <div class="card-header" style="background-color: rgb(49, 184, 208)">
-            <h1 class="text-center">Listado de Viajes</h1>
-        </div>
-        <div class="card-body">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Origen</th>
-                        <th>Destino</th>
-                        <th>fecha viaje</th>
-                        <th>Hora Salida</th>
-                        <th>Hora Llegada</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                
-                <tbody> 
-                     @foreach ($viajes as $viaj)  
-                        <tr>
-                            <td>{{ $viaj->origen }}</td>
-                            <td>{{ $viaj->destino }}</td>
-                            <td>{{ $viaj->fecha_viaje }}</td>
-                            <td>{{ $viaj->hora_viaje }}</td>
-                            <td>{{ $viaj->hora_llegada }}</td>
-                            <td>
-                                <button type="button" class="btn btn-success btn-sm" data-id="{{ $viaj->id }}"
-                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    detalle
-                                </button>
+        @if (session('reservas'))
+            <div class="toast-container position-fixed bottom-0 end-0 p-4">
+                <div id="liveToast" class="toast fade show d-flex text-bg-secondary" role="alert" aria-live="assertive"
+                    aria-atomic="true">
+                    <div class="toast-body ">
+                        {{ session('reservas') }}
+                    </div>
+                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"
+                        aria-label="Close"></button>
+                </div>
+            </div>
+        @endif
+        <div class="card">
+            <div class="card-header" style="background-color:black">
+                <h1 class="text-center" style="color:rgb(255, 255, 255)">Listado de Viajes</h1>
+            </div>
+            <div class="card-body
+                    pt-0" style="max-height:350px; overflow-y: auto;">
 
-                                <a href="/modificar/{{ $viaj->id }}" class="btn btn-primary btn-sm">Modificar</a>
-                                <form action="/mostrarViajes/{{ $viaj->id }}" method="POST"
-                                    style="display: inline-block;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" onclick="return confirmarEliminacion()"
-                                        class="btn btn-danger btn-sm">Eliminar</button>
-                                </form>
-                                
-                                <form action="/mostrarReservas/{{ $viaj->id }}" method="GET" style="display: inline-block;">
-                                    @csrf
-                                    <button type="submit" class="btn btn-info btn-sm">reservaciones</button>
-                                </form>
-                            </td>                                 
+                <table class="table table-striped ">
+                    <thead class="bg-white text-black" style="position: sticky ;top:0px">
+                        <tr>
+                            <th>Origen</th>
+                            <th>Destino</th>
+                            <th>fecha viaje</th>
+                            <th>Hora Salida</th>
+                            <th>Hora Llegada</th>
+                            <th>Acciones</th>
                         </tr>
-                        @endforeach   
-                </tbody>
-                
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($viajes as $viaj)
+                            <tr>
+                                <td>{{ $viaj->origen }}</td>
+                                <td>{{ $viaj->destino }}</td>
+                                <td>{{ $viaj->fecha_viaje }}</td>
+                                <td>{{ $viaj->hora_viaje }}</td>
+                                <td>{{ $viaj->hora_llegada }}</td>
+                                <td>
+                                    <!-- button para mostrar informciones del viaje-->
+                                    <button type="button" class="btn btn-success btn-sm" data-id="{{ $viaj->id }}"
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        detalle
+                                    </button>
+                                    <!-- button para le modificacion del viaje-->
+                                    <a href="/modificar/{{ $viaj->id }}" class="btn btn-primary btn-sm">Modificar</a>
+                                    <!-- button para le eliminacion del viaje-->
+                                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#confirmModal{{ $viaj->id }}">
+                                        Eliminar
+                                    </button>
+
+                                    <!-- Modal de confirmación de la eliminacion-->
+                                    <div class="modal fade" id="confirmModal{{ $viaj->id }}" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Confirmar Eliminación
+                                                    </h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>¿Estás seguro de que deseas eliminar este viaje?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form action="/mostrarViajes/{{ $viaj->id }}" method="POST"
+                                                        style="display: inline-block;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                    </form>
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- button para mostrar reservaciones-->
+                                    <form action="/mostrarReservas/{{ $viaj->id }}" method="GET"
+                                        style="display: inline-block;">
+                                        <button type="submit" class="btn btn-info btn-sm ">reservaciones</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
-
-    <!-- Modal -->
+    <!-- Modal para mostrar informaciones del viaje-->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -115,7 +153,8 @@
 
         </div>
     </div>
-    </div>
+
+
     <script>
         $(document).ready(function() {
             // Cuando se muestra el modal
@@ -149,10 +188,5 @@
                 });
             });
         });
-    </script>
-    <script>
-        function confirmarEliminacion() {
-            return confirm('¿Estás seguro de que deseas eliminar este viaje?');
-        }
     </script>
 @endsection

@@ -14,7 +14,9 @@ use App\Http\Controllers\Admincontroller;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::fallback(function () {
+    return view('error'); // Esto carga una vista de error 404
+});
 
 Route::get('/login', [Admincontroller::class, 'showlogin']);
 Route::post('/login', [Admincontroller::class, 'login']);
@@ -48,3 +50,6 @@ Route::get('/confirmacion/{dni}', [ViajeController::class, 'confirmacion']);
 
 
 Route::get('/mostrarReservas/{viaje_id}', [ViajeController::class, 'mostrarResarva']);
+Route::get('/showReserva', [ViajeController::class, 'showReserva']);
+Route::delete('/eliminarReserva/{id}/{viaje_id}', [ViajeController::class, 'eliminarReserva']);
+Route::post('/modificarReserva', [ViajeController::class, 'modificarReserva']);

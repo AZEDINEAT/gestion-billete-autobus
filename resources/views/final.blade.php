@@ -1,12 +1,13 @@
 @extends('app')
 
 @section('contenido')
-    <section class="pt-0 pt-lg-5">
+    <section class="pt-0 pt-lg-1 mt-5 mb-3">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header text-white" style="background-color:  rgb(49, 184, 208)">Confirmación de reserva</div>
+                        <div class="card-header text-white" style="background-color:  rgb(49, 184, 208)">Confirmación de
+                            reserva</div>
 
                         <div class="card-body" style="background-color:rgb(163, 243, 236) ">
                             <h4>¡Reserva confirmada!</h4>
@@ -28,12 +29,9 @@
                                     <p><strong>Precio:</strong> {{ $reservacion->viaje->precio }} euros</p>
                                 </div>
                             </div>
-
-                            <p>Se ha enviado un correo electrónico de confirmación a la dirección
-                                "{{ $reservacion->correo_electronico }}"con los detalles de la reserva.</p>
-
-                            <a href="/" class="btn btn-primary">Volver a la página de inicio</a>
-                            <a href="{{ route('descargar_pdf', $reservacion->id) }}" class="btn btn-primary">Descargar en
+                            <a href="/" class="btn btn-primary mb-2">Volver al inicio</a>
+                            <a href="{{ route('descargar_pdf', $reservacion->id) }}" class="btn btn-primary mb-2 ">Descargar
+                                en
                                 PDF</a>
                         </div>
                     </div>
