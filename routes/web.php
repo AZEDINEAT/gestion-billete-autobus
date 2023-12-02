@@ -14,8 +14,9 @@ use App\Http\Controllers\Admincontroller;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+// Esto carga una vista de error 404
 Route::fallback(function () {
-    return view('error'); // Esto carga una vista de error 404
+    return view('error'); 
 });
 
 Route::get('/login', [Admincontroller::class, 'showlogin']);

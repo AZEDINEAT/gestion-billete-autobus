@@ -12,7 +12,7 @@
                             text-center">
                                 <p class="lead" style="font-weight:normal;">{{ $viaje->origen }}</p>
                                 <hr style="border-top: 1px solid rgb(185, 33, 33)">
-                                <p class="lead mt-3 text-white">{{ date('h:i', strtotime($viaje->hora_viaje)) }}</p>
+                                <p class="lead mt-3 text-white">{{ date('h:i A', strtotime($viaje->hora_viaje)) }}</p>
                             </div>
 
                             <div class="col-md-4">
@@ -26,7 +26,7 @@
                                 <div class="text-center ">
                                     <p class="lead" style="font-weight:normal;">{{ $viaje->destino }}</p>
                                     <hr style="border-top: 1px solid rgb(0, 0, 0); margin: 5px 0;">
-                                    <p class="lead mt-3 text-white">{{ date('h:i', strtotime($viaje->hora_llegada)) }}</p>
+                                    <p class="lead mt-3 text-white">{{ date('h:i A', strtotime($viaje->hora_llegada)) }}</p>
                                 </div>
                             </div>
                         </div>
