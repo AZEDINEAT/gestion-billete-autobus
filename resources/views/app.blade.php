@@ -24,39 +24,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous">
     </script>
-    <style>
-        .progress-bar {
-            height: 20px;
-            background-color: #f8f9fa;
-            /* Color de fondo de los puntos */
-            overflow: hidden;
-        }
 
-        @keyframes move {
-            0% {
-                margin-left: -100%;
-            }
-
-            100% {
-                margin-left: 100%;
-            }
-        }
-
-        .progress-bar::before {
-            content: '';
-            display: block;
-            width: 10px;
-            /* Tamaño de cada punto */
-            height: 10px;
-            /* Tamaño de cada punto */
-            background-color: #007bff;
-            /* Color de los puntos */
-            border-radius: 50%;
-            /* Hace que los puntos sean redondos */
-            animation: move 2s infinite;
-            /* Duración y repetición de la animación */
-        }
-    </style>
 </body>
 
 </html>

@@ -25,7 +25,7 @@
 
                         <!-- Card header -->
                         <div class="card-header border-bottom p-3 p-sm-4" style="background-color:rgb(49, 184, 208) ;">
-                            <h5 class="card-title text-center">Buscar Tu Viaje</h5>
+                            <h5 class="card-title text-center text-white">Buscar Tu Viaje</h5>
                         </div>
 
                         <form method="get" action="/resultado" class="card-body form-control-border p-3 p-sm-4">
@@ -33,7 +33,7 @@
                             <div class="mb-3">
                                 <label for="origen" class="form-label">Origen:</label>
                                 <input class="form-control" list="origenes" name="origen"
-                                    placeholder="Selecciona un origen">
+                                    placeholder="Selecciona un origen" required>
                                 <datalist id="origenes">
                                     @foreach ($origenes as $origen)
                                         <option value="{{ $origen->origen }}">
@@ -43,7 +43,7 @@
                             <div class="mb-3">
                                 <label for="destino" class="form-label">Destino:</label>
                                 <input class="form-control" list="destinos" name="destino"
-                                    placeholder="Selecciona un destino">
+                                    placeholder="Selecciona un destino" required>
                                 <datalist id="destinos">
                                     @foreach ($destinos as $destino)
                                         <option value="{{ $destino->destino }}">
@@ -52,7 +52,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="date" class="form-label">Fecha:</label>
-                                <input class="form-control" type="date" name="fecha_viaje">
+                                <input class="form-control" type="date" name="fecha_viaje" required>
                             </div>
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-dark mb-0">Buscar</button>
@@ -131,12 +131,11 @@
                             aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p>Error al obtener la información del billete.</p>
+                        <p>Error al obtener las informaciónes del billete.</p>
                     </div>
                 </div>
             </div>
         </div>
-
     </section>
 
 

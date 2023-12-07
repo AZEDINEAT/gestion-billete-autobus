@@ -1,5 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light"
-    style="background-image: radial-gradient(circle at 77.81% 60.12%, #52d4eb 0, #55c1d8 50%, #57aec5 100%);">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color:  #52d4eb;">
     <div class="container-fluid">
         <a class="navbar-brand" href="/"> <img src="{{ asset('imagens/bus-ticket.png') }}"
                 style="max-width: 40px; height: auto;" alt="logo autobus" class="bus-image "> </a>

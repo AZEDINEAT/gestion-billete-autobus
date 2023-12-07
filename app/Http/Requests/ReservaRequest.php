@@ -27,7 +27,7 @@ class ReservaRequest extends FormRequest
             'correo_electronico' => 'required|email|max:255',
             'direccion' => 'required|string|max:255',
             'ciudad' => 'required|string|max:255',
-            'codigo_postal' => 'required|integer|gt:0',
+            'codigo_postal' => 'required|string|max:5',
         ];
 
     }
@@ -52,6 +52,7 @@ class ReservaRequest extends FormRequest
             'codigo_postal.required' => 'El campo código postal es obligatorio.',
             'codigo_postal.integer' => 'El campo código postal debe ser un número entero.',
             'codigo_postal.gt' => 'El campo código postal debe ser mayor que cero.',
+            'codigo_postal.max' => 'El campo código postal no puede superar los :max caracteres.',
         ];
     }
 }

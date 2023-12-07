@@ -2,18 +2,16 @@
 
 @section('contenido')
     <div class="row mt-5">
-        <div class="col-6 " style="max-height:350px; overflow-y: auto;">
-            @if (session('error'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    {{ session('error') }}
+        <div class="col-6" style="max-height:355px; overflow-y: auto;">
+            @if (session('mensaje'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session('mensaje') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
             <table class="table">
-                <thead style="position: sticky ;top:0px">
-                    <tr
-                        style="background: rgb(0,212,255);
-                    background: linear-gradient(90deg, rgba(0,212,255,1) 61%, rgba(2,0,36,1) 95%);">
+                <thead style="background-color: rgb(49, 184, 208);position:sticky;top:0px">
+                    <tr>
                         <th style="">ID</th>
                         <th>nombre</th>
                         <th>DNI</th>
@@ -21,11 +19,9 @@
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style="background-color: rgb(163, 243, 236);">
                     @foreach ($reserva as $res)
-                        <tr
-                            style="background: rgb(0,212,255);
-                        background: linear-gradient(90deg, rgba(0,212,255,1) 61%, rgba(2,0,36,1) 95%);">
+                        <tr>
                             <td>{{ $res->id }}</td>
                             <td>{{ $res->nombre }}</td>
                             <td>{{ $res->DNI }}</td>
@@ -87,13 +83,11 @@
             @endif
             <form method="POST" action="/modificarReserva">
                 @csrf
-                <div class="row shadow justify-content-center text-white"
-                    style="background: rgb(2,0,36);
-                    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(15,123,143,1) 45%, rgba(0,212,255,1) 100%);;border-radius: 5px;width:90">
+                <div class="row shadow justify-content-center rounded" style="background-color: rgb(49, 184, 208);">
                     <input type="text" name="viaje_id" id="viaje_id" hidden>
                     <div class="col-2">
                         <label for="nombre" class="form-label">ID</label>
-                        <input type="text" class="form-control" name="id" id="id" required>
+                        <input type="text" class="form-control" name="id" id="id" required readonly>
                     </div>
                     <div class="col-5">
                         <label for="nombre" class="form-label">nombre</label>
@@ -122,9 +116,7 @@
                         <input type="text" class="form-control" name="codigo_postal" required id="codigo_postal">
                     </div>
                     <div class="col-0 mt-3 mb-2">
-                        <button type="submit" class="btn px-4 text-white"
-                            style="background: rgb(63,149,251);
-                        background: radial-gradient(circle, rgba(63,149,251,1) 37%, rgba(85,70,252,1) 86%);">Guardar</button>
+                        <button type="submit" class="btn px-4 text-white bg-success">Guardar</button>
                     </div>
                 </div>
             </form>

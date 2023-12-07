@@ -20,13 +20,13 @@
             </div>
         @endif
         <div class="card">
-            <div class="card-header" style="background-color:black">
+            <div class="card-header" style="background-color:rgb(49, 184, 208);">
                 <h1 class="text-center" style="color:rgb(255, 255, 255)">Listado de Viajes</h1>
             </div>
             <div class="card-body
                     pt-0" style="max-height:350px; overflow-y: auto;">
 
-                <table class="table table-striped ">
+                <table class="table table-striped">
                     <thead class="bg-white text-black" style="position: sticky ;top:0px">
                         <tr>
                             <th>Origen</th>
@@ -64,7 +64,7 @@
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
-                                                <div class="modal-header">
+                                                <div class="modal-header bg-danger text-white">
                                                     <h5 class="modal-title" id="exampleModalLabel">Confirmar Eliminación
                                                     </h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -100,11 +100,11 @@
         </div>
     </div>
 
-    <!-- Modal para mostrar informaciones del viaje-->
+    <!-- Modal para mostrar detalle del viaje-->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header" style="background-color: rgb(79, 218, 207)">
+                <div class="modal-header text-white" style="background-color: rgb(49, 184, 208) ">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">detalle de viaje</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>

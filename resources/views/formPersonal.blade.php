@@ -3,7 +3,7 @@
 @section('contenido')
     <div class="container mt-5">
 
-        <form action="/resultado/{{ $viaje_id }}/profil/ticket" method="post">
+        <form action="/resultado/{{ $viaje_id }}/formPersonal/billete" method="post">
             @csrf
             <div class="row justify-content-center">
                 @if ($errors->any())

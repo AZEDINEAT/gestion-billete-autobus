@@ -28,7 +28,7 @@ class ViajeRequest extends FormRequest
             'hora_llegada' => 'required',
             'origen' => 'required|string|max:255',
             'destino' => 'required|string|max:255',
-            'num_asientos_dispo' => 'required|integer|gt:0',
+            'num_asientos_dispo' => 'required|integer|gte:0',
             'precio' => 'required|numeric|gte:0',
         ];
     }
@@ -50,7 +50,7 @@ class ViajeRequest extends FormRequest
             'destino.max' => 'El campo destino no puede superar los :max caracteres.',
             'num_asientos_dispo.required' => 'El campo número de asientos disponibles es obligatorio.',
             'num_asientos_dispo.integer' => 'El campo número de asientos disponibles debe ser un número entero.',
-            'num_asientos_dispo.gt' => 'El campo número de asientos disponibles debe ser mayor que cero.',
+            'num_asientos_dispo.gte' => 'El campo número de asientos disponibles debe ser mayor que cero.',
             'precio.required' => 'El campo precio es obligatorio.',
             'precio.numeric' => 'El campo precio debe ser un número.',
             'precio.gte' => 'El campo precio debe ser mayor o igual a cero.',

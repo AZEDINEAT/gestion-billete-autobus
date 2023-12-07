@@ -17,12 +17,16 @@
                     @endif
                     <div class="card" style="background-color: rgb(163, 243, 236)">
                         @if (isset($viaje))
-                            <div class="card-header" style="background-color: rgb(49, 184, 208) ;">Modificar viaje</div>
+                            <div class="card-header text-center text-white fs-3"
+                                style="background-color: rgb(49, 184, 208) ;">
+                                Modificar</div>
                             <div class="card-body ">
                                 <form action="/modificar/{{ $viaje->id }}" method="POST">
                                     @method('PUT')
                                 @else
-                                    <div class="card-header " style="background-color: rgb(49, 184, 208)">Crear viaje</div>
+                                    <div class="card-header text-center text-white fs-3"
+                                        style="background-color: rgb(49, 184, 208)">Crear
+                                    </div>
                                     <div class="card-body ">
                                         <form method="POST" action="{{ route('crearViaje') }}">
                         @endif
